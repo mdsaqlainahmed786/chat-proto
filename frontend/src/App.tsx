@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { io } from "socket.io-client";
 
-const socket = io("http://localhost:4000");
+const socket = io("https://chat-proto.onrender.com");
 
 interface ChatMessage {
   id: string;
@@ -42,8 +42,8 @@ function App() {
 
     const reader = new FileReader();
     reader.onloadend = async () => {
-      const base64 = reader.result;
-      const res = await fetch("http://localhost:4000/upload", {
+        const base64 = reader.result;
+        const res = await fetch("https://chat-proto.onrender.com/upload", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ image: base64 }),
